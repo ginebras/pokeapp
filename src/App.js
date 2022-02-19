@@ -17,35 +17,43 @@ export default function App() {
   const PokemonStats = ({ pokemon }) => {
     return (
       <>
-        {!pokemon ? (
+        {Object.keys(pokemon).length === 0 ? (
           <div>No pokemon yet. Search for one</div>
         ) : (
-          <div class="card" style="width: 18rem;">
+          <div className="card" style={{ width: '18rem' }}>
             <img
-              src={pokemon.sprites.front_default}
-              class="card-img-top"
+              src={pokemon.sprites?.front_default}
+              className="card-img-top"
               alt="..."
             />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+            <div className="card-body">
+              <h5 className="card-title">{pokemon.name}</h5>
+              <p className="card-text">
+                <strong>Type:</strong> {pokemon.types[0].type.name}
+                <br />
+                <strong>Specie:</strong> {pokemon.species.name}
               </p>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <strong>Hp</strong>: {pokemon.stats[0].base_stat}{' '}
+              </li>
+              <li className="list-group-item">
+                <strong>Attack</strong>: {pokemon.stats[1].base_stat}{' '}
+              </li>
+              <li className="list-group-item">
+                <strong>Defense</strong>: {pokemon.stats[2].base_stat}{' '}
+              </li>
+              <li className="list-group-item">
+                <strong>Special Attack</strong>: {pokemon.stats[3].base_stat}{' '}
+              </li>
+              <li className="list-group-item">
+                <strong>Special Defense</strong>: {pokemon.stats[4].base_stat}{' '}
+              </li>
+              <li className="list-group-item">
+                <strong>Speed</strong>: {pokemon.stats[5].base_stat}{' '}
+              </li>
             </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">
-                Card link
-              </a>
-              <a href="#" class="card-link">
-                Another link
-              </a>
-            </div>
           </div>
         )}
       </>
@@ -67,7 +75,7 @@ export default function App() {
           </button>
         </div>
       </div>
-      <div className="container">
+      <div className="d-flex justify-content-center">
         <PokemonStats pokemon={pokemon} />
       </div>
     </div>
